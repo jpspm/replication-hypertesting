@@ -1,0 +1,137 @@
+{
+    "dataset": "datasets/NewDataset",
+    "timestamp": "06-06-2026_211038",
+    "runs": 5,
+    "note": "computeMetricsRQ3.main() crashed (FileNotFoundError: hyperrandom.log not found); metrics computed manually from raw result files",
+    "TPR": {
+        "hyperfuzz": 0.8333333333333334,
+        "hyperevo": 1.0,
+        "phosphor": 0.0
+    },
+    "FPR": {
+        "hyperfuzz": 0.25,
+        "hyperevo": 0.25,
+        "phosphor": 0.0
+    },
+    "FNR": {
+        "hyperfuzz": 0.16666666666666666,
+        "hyperevo": 0.0,
+        "phosphor": 1.0
+    },
+    "ACC": {
+        "hyperfuzz": 0.8,
+        "hyperevo": 0.9,
+        "phosphor": 0.4
+    },
+    "phosphor_note": "Phosphor classified all 10 programs as result=1 (safe) because the simplified IFSpec programs lack main() methods. Phosphor's JVM runner reports 'Error: Main method not found' for each program, so no taint flows are detected. All insecure programs are false negatives for Phosphor.",
+    "samples": [
+        {
+            "sampleName": "NewDataset/ArrayCopyDirectLeak-unsecure",
+            "groundTruth": 0,
+            "result": {
+                "hyperfuzz": [0, "TP"],
+                "hyperevo": [0, "TP"],
+                "phosphor": [1, "FN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/ImplicitListSizeLeak-unsecure",
+            "groundTruth": 0,
+            "result": {
+                "hyperfuzz": [0, "TP"],
+                "hyperevo": [0, "TP"],
+                "phosphor": [1, "FN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/ImplicitListSizeNoLeak-secure",
+            "groundTruth": 1,
+            "result": {
+                "hyperfuzz": [1, "TN"],
+                "hyperevo": [1, "TN"],
+                "phosphor": [1, "TN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleConditionalAssignmentEqual-secure",
+            "groundTruth": 1,
+            "result": {
+                "hyperfuzz": [1, "TN"],
+                "hyperevo": [1, "TN"],
+                "phosphor": [1, "TN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleListSize-unsecure",
+            "groundTruth": 0,
+            "result": {
+                "hyperfuzz": [0, "TP"],
+                "hyperevo": [0, "TP"],
+                "phosphor": [1, "FN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleListToArraySize-unsecure",
+            "groundTruth": 0,
+            "result": {
+                "hyperfuzz": [0, "TP"],
+                "hyperevo": [0, "TP"],
+                "phosphor": [1, "FN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleTypes-unsecure",
+            "groundTruth": 0,
+            "result": {
+                "hyperfuzz": [2, "FN"],
+                "hyperevo": [0, "TP"],
+                "phosphor": [1, "FN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/StringIntern-unsecure",
+            "groundTruth": 0,
+            "result": {
+                "hyperfuzz": [0, "TP"],
+                "hyperevo": [0, "TP"],
+                "phosphor": [1, "FN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/timebomb-secure",
+            "groundTruth": 1,
+            "result": {
+                "hyperfuzz": [0, "FP"],
+                "hyperevo": [0, "FP"],
+                "phosphor": [1, "TN"]
+            }
+        },
+        {
+            "sampleName": "NewDataset/Webstore-secure",
+            "groundTruth": 1,
+            "result": {
+                "hyperfuzz": [1, "TN"],
+                "hyperevo": [1, "TN"],
+                "phosphor": [1, "TN"]
+            }
+        }
+    ],
+    "csvTable": [
+        "Metrics;Phosphor;HyperFuzz;HyperEvo",
+        "TPR;0.00;0.83;1.00",
+        "FPR;0.00;0.25;0.25",
+        "FNR;1.00;0.17;0.00",
+        "ACC;0.40;0.80;0.90",
+        "Sample;Ground Truth;Phosphor;HyperFuzz;HyperEvo",
+        "ArrayCopyDirectLeak-unsecure;insecure;secure(FN);insecure(TP);insecure(TP)",
+        "ImplicitListSizeLeak-unsecure;insecure;secure(FN);insecure(TP);insecure(TP)",
+        "ImplicitListSizeNoLeak-secure;secure;secure(TN);secure(TN);secure(TN)",
+        "simpleConditionalAssignmentEqual-secure;secure;secure(TN);secure(TN);secure(TN)",
+        "simpleListSize-unsecure;insecure;secure(FN);insecure(TP);insecure(TP)",
+        "simpleListToArraySize-unsecure;insecure;secure(FN);insecure(TP);insecure(TP)",
+        "simpleTypes-unsecure;insecure;secure(FN);secure(FN,given-up);insecure(TP)",
+        "StringIntern-unsecure;insecure;secure(FN);insecure(TP);insecure(TP)",
+        "timebomb-secure;secure;secure(TN);insecure(FP);insecure(FP)",
+        "Webstore-secure;secure;secure(TN);secure(TN);secure(TN)"
+    ]
+}

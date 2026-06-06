@@ -1,0 +1,130 @@
+{
+    "dataset": "datasets/NewDataset",
+    "timestamp": "06-06-2026_205558",
+    "testRuns": 5,
+    "samples": [
+        {
+            "sampleName": "NewDataset/ArrayCopyDirectLeak-unsecure",
+            "classFile": "/hypertesting/datasets/NewDataset/ArrayCopyDirectLeak-unsecure/program/Eg4.java",
+            "methodName": "f",
+            "groundTruth": 0,
+            "totalGoals": 1,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/ImplicitListSizeLeak-unsecure",
+            "classFile": "/hypertesting/datasets/NewDataset/ImplicitListSizeLeak-unsecure/program/simpleListSize.java",
+            "methodName": "listSizeLeak",
+            "groundTruth": 0,
+            "totalGoals": 4,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/ImplicitListSizeNoLeak-secure",
+            "classFile": "/hypertesting/datasets/NewDataset/ImplicitListSizeNoLeak-secure/program/simpleListSize.java",
+            "methodName": "listSizeLeak",
+            "groundTruth": 1,
+            "totalGoals": 7,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleConditionalAssignmentEqual-secure",
+            "classFile": "/hypertesting/datasets/NewDataset/simpleConditionalAssignmentEqual-secure/program/simpleConditionalAssignmentEqual.java",
+            "methodName": "test",
+            "groundTruth": 1,
+            "totalGoals": 1,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleListSize-unsecure",
+            "classFile": "/hypertesting/datasets/NewDataset/simpleListSize-unsecure/program/simpleListSize.java",
+            "methodName": "listSizeLeak",
+            "groundTruth": 0,
+            "totalGoals": 3,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleListToArraySize-unsecure",
+            "classFile": "/hypertesting/datasets/NewDataset/simpleListToArraySize-unsecure/program/simpleListToArraySize.java",
+            "methodName": "listArraySizeLeak",
+            "groundTruth": 0,
+            "totalGoals": 3,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/simpleTypes-unsecure",
+            "classFile": "/hypertesting/datasets/NewDataset/simpleTypes-unsecure/program/simpleTypes.java",
+            "methodName": "test",
+            "groundTruth": 0,
+            "totalGoals": 6,
+            "coverage": {
+                "hyperfuzz": 0.33333334,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/StringIntern-unsecure",
+            "classFile": "/hypertesting/datasets/NewDataset/StringIntern-unsecure/program/program.java",
+            "methodName": "foo",
+            "groundTruth": 0,
+            "totalGoals": 1,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/timebomb-secure",
+            "classFile": "/hypertesting/datasets/NewDataset/timebomb-secure/program/Main.java",
+            "methodName": "noLeak",
+            "groundTruth": 1,
+            "totalGoals": 4,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        },
+        {
+            "sampleName": "NewDataset/Webstore-secure",
+            "classFile": "/hypertesting/datasets/NewDataset/Webstore-secure/program/Webstore.java",
+            "methodName": "buyProduct",
+            "groundTruth": 1,
+            "totalGoals": 1,
+            "coverage": {
+                "hyperfuzz": 1.0,
+                "hyperevo": 1.0
+            }
+        }
+    ],
+    "csvTable": [
+        "SampleName;TotalGoals;CoverageHyperFuzz;CoverageHyperEvo",
+        "ArrayCopyDirectLeak-unsecure;1;1.00;1.00",
+        "ImplicitListSizeLeak-unsecure;4;1.00;1.00",
+        "ImplicitListSizeNoLeak-secure;7;1.00;1.00",
+        "StringIntern-unsecure;1;1.00;1.00",
+        "Webstore-secure;1;1.00;1.00",
+        "simpleConditionalAssignmentEqual-secure;1;1.00;1.00",
+        "simpleListSize-unsecure;3;1.00;1.00",
+        "simpleListToArraySize-unsecure;3;1.00;1.00",
+        "simpleTypes-unsecure;6;0.33;1.00",
+        "timebomb-secure;4;1.00;1.00"
+    ]
+}

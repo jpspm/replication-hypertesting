@@ -1,0 +1,58 @@
+{
+    "dataset": "datasets/NewDataset-phosphor",
+    "timestamp": "06-06-2026_212525",
+    "strategy": "phosphor",
+    "analysisRuns": 5,
+    "samples": [
+        {
+            "sampleName": "NewDataset-phosphor/ArrayCopyDirectLeak-unsecure",
+            "groundTruth": 0,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/ImplicitListSizeLeak-unsecure",
+            "groundTruth": 0,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/ImplicitListSizeNoLeak-secure",
+            "groundTruth": 1,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/simpleConditionalAssignmentEqual-secure",
+            "groundTruth": 1,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/simpleListSize-unsecure",
+            "groundTruth": 0,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/simpleListToArraySize-unsecure",
+            "groundTruth": 0,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/simpleTypes-unsecure",
+            "groundTruth": 0,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/StringIntern-unsecure",
+            "groundTruth": 0,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/timebomb-secure",
+            "groundTruth": 1,
+            "result": 1
+        },
+        {
+            "sampleName": "NewDataset-phosphor/Webstore-secure",
+            "groundTruth": 1,
+            "result": 1
+        }
+    ]
+}

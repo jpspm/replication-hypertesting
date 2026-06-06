@@ -1,0 +1,17 @@
+# Runtime-generated Phosphor JVM install (~610 MB)
+phosphor-install/
+
+# Per-run fuzzing reports (1.1 MB each, ~220 MB total)
+# Keep: *-results.json, *-metrics.json (summary files)
+results/RQ2/hyperfuzz_*/reports/
+results/RQ2/hyperevo_*/reports/
+results/RQ3/hyperfuzz_*/reports/
+results/RQ3/hyperevo_*/reports/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Runtime log files
+*.log
+logFilename_IS_UNDEFINED.log
