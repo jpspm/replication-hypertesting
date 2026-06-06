@@ -1,0 +1,29 @@
+{
+  "seed": 42,
+  "requested": 50,
+  "available": 10,
+  "samples": [
+    "ArrayCopyDirectLeak-unsecure",
+    "ImplicitListSizeLeak-unsecure",
+    "ImplicitListSizeNoLeak-secure",
+    "StringIntern-unsecure",
+    "Webstore-secure",
+    "simpleConditionalAssignmentEqual-secure",
+    "simpleListSize-unsecure",
+    "simpleListToArraySize-unsecure",
+    "simpleTypes-unsecure",
+    "timebomb-secure"
+  ],
+  "ifspec_names": [
+    "ArrayCopyDirectLeak",
+    "ImplicitListSizeLeak",
+    "ImplicitListSizeNoLeak",
+    "StringIntern",
+    "Webstore",
+    "simpleConditionalAssignmentEqual",
+    "simpleListSize",
+    "simpleListToArraySize",
+    "simpleTypes",
+    "timebomb"
+  ]
+}

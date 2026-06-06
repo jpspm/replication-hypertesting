@@ -1,187 +1,254 @@
-# Replication Package
-Related to the paper:
+# HyperTesting Extended Replication
 
-> Pasqua Michele, Ceccato Mariano and Tonella Paolo. 2024. **Hypertesting of Programs: Theoretical Foundation and Automated Test Generation**. In: *Proceedings of the 46<sup>th</sup> IEEE/ACM International Conference on Software Engineering* (ICSE '24). ACM, 1-11. *(to appear)*.
+Replication and extension of the empirical evaluation from:
 
-Contact e-mail: [Pasqua Michele](mailto:michele.pasqua@univr.it)
+> "Hypertesting of Programs: Theoretical Foundation and Automated Test Generation"  
+> ICSE 2024
 
-## Purpose
+This project applies HyperFuzz, HyperEvo, and Phosphor to 10 previously unused IFSpec programs not included in the original paper.
 
-The primary goal of this repository is to facilitate the replication of the results reported in the empirical evaluation of the companion paper. Such evaluation empirically validates the novel hypercoverage criterion and hypertesting approach proposed in the paper, by considering a specific hyperproperty for security, *Non-Interference*. The empirical study is guided by three research questions:
-- ***RQ<sub>1</sub> (Correlation)***, assessing if hypercoverage correlates with the exposure of hyperproperty violations;
-- ***RQ<sub>2</sub> (Coverage)***, assessing if the proposed hypertest input generators can achieve high coverage; and
-- ***RQ<sub>3</sub> (Effectiveness)***, assessing if the hypertest inputs generated under the guidance of hypercoverage can effectively expose hyperproperty violations.
+---
 
-The repository makes also available a dataset of Java programs, together with ground-truth security tags, that can be used to assess the effectiveness of detection tools targeting Non-Interference violations. Finally, the artifact provides the executables and the usage documentation of the tools `hyperfuzz` and `hyperevo`, the two hypertest input generators presented in the companion paper.
+## Requirements
 
-## Content
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows/Linux/macOS)
+- ~4 GB disk space
+- ~35 minutes to run all experiments
 
-The repository contains the following files:
-- this `README.md` file, documenting the replication package
-- the [`LICENSE`](/LICENSE) file
-- a copy [`ICSE24-preprint.pdf`](/ICSE24-preprint.pdf) of the pre-print version of the companion paper
-- the `submission-results.tar.xz` file, containing the pre-computed results reported in the companion paper
+No local Java or Python installation is required — everything runs inside Docker.
 
-and the following directories:
-- [`bin/`](/bin), containing the executables of `hyperfuzz` and `hyperevo` (used in RQ<sub>2</sub> and RQ<sub>3</sub>), and the executable `hypercoveragetester.jar` (used in RQ<sub>1</sub>)
-- [`datasets/`](/datasets), containing all datasets of Java programs used in the experiments
-- [`lib/`](/lib), containing a pre-instrumented JVM and the executable of `phosphor` (used in RQ<sub>3</sub>)
-- [`scripts/`](/scripts), containing all Python scripts used to run experiments and compute metrics
-- [`example/`](/example), containing an example Java class source code.
+---
 
-## Data
+## Project Structure
 
-The sample programs used in the empirical evaluation consists in 34 vulnerable and non-vulnerable Java classes (source code) taken from the public dataset `IFSpec`[^1]. The latter, is a collection of freely-usable Java applications that are by design vulnerable or non-vulnerable to Non-Interference.
-
-[^1]: Tobias Hamann, Mihai Herda, Heiko Mantel, Martin Mohr, David Schneider and Markus Tasch. 2018. **A Uniform Information-Flow Security Benchmark Suite for Source Code and Bytecode**. In: *Proceedings of Secure IT Systems - 23<sup>rd</sup> Nordic Conference* (NordSec 2018). LNCS, Vol. 11252, Ed. Nils Gruschka. Springer, 437-453.
-
-In `IFSpec`, variables are already tagged with security levels, taken from a security lattice, by using *RIFL* specifications. In the evaluation, we simplified the security tagging of variables: for each sample class we manually provided a `settings.conf` file containing a simple mapping `var:secTag`, where `secTag` can be either `L`, indicating a *public* variable, or `H`, indicating a *confidential* variable. Samples name has been provided with a trailing string indicating the ground-truth: `secure`, meaning that the sample does not contain a Non-Interference vulnerability; or `unsecure`, meaning that the sample do contain a Non-Interference vulnerability.
-
-To answer RQ<sub>1</sub> only the vulnerable programs are needed, consisting in 14 Java classes having a Non-Interference vulnerability. Finally, since `phosphor` requires a manual modification of the program source code, in order to insert the information needed to perform instrumentation, we also provide the modified versions of all 34 vulnerable and non-vulnerable samples.
-
-The [`datasets/`](/datasets) directory contains the sample Java programs (source code and configuration file indicating security tags) used in the evaluation. In particular:
-- the [`datasets/UnsecureOnlyDataset/`](/datasets/UnsecureOnlyDataset) directory contains the samples comprising only the vulnerable programs (used in RQ<sub>1</sub>)
-- the [`datasets/FullDataset/`](/datasets/FullDataset) directory contains all samples, vulnerable and non-vulnerable programs (used in RQ<sub>2</sub> and RQ<sub>3</sub>)
-- the [`datasets/FullDataset-phosphor/`](/datasets/FullDataset) directory contains all samples, vulnerable and non-vulnerable programs, modified in order to run with `phosphor` (used in RQ<sub>3</sub>)
-
-> The [`submission-results.tar.xz`](/submission-results.tar.xz) archive contains the ***pre-computed results*** that are reported in the companion paper.
-
-## Setup
-
-To run the experiments no particular hardware is required. All experiments have been tested on a laptop having the following configuration:
-- 11th Gen Intel Core i5-1135G7 CPU
-- 8 GiB of RAM
-- an integrated Intel Xe Graphics (TGL GT2)
-
-> Experiments have been tested on a **Linux** machine (based on Ubuntu `20.04.3` LTS with Linux `5.11.0-27` kernel).
-
-### Requirements
-Apart from the Python dependencies specified in the [`scripts/requirements.txt`](/scripts/requirements.txt) file, that you can install by using `pip`,
-```console
-foo@bar:~ReplicationPackage$ pip install -r scripts/requirements.txt
 ```
-to run the experiments you need:
-- Python3 (tested on Python `3.8.10`)
-- a Java Runtime Environment (tested on OpenJDK `16.0.1`)
-- the `phosphor` binaries and a `phosphor`-instrumented JVM
-
-You can follow the `phosphor` official [readme](https://github.com/gmu-swe/phosphor) to install the tool and instrument a JVM. To avoid some `phosphor` issues, it is recommended to instrument a **Java 16** virtual machine.
-
-**[recommended]** Alternatively, you can use the provided `phosphor` install script as described in the following.
-
-In the `lib/` directory we provide an archive containing an already instrumented JVM and the `phosphor` binaries. We also provide a Python script that installs both the JVM and the binaries. *We assume to run the script from the root directory of this repository*.
-```console
-foo@bar:~ReplicationPackage$ python3 scripts/phosphorInstallFromLocal.py install <phosphorDir>
+.
+├── Dockerfile                   # Ubuntu 20.04 + OpenJDK 16 + Python 3.8
+├── run_all_experiments.sh       # Phases 8–12: Phosphor + RQ1/RQ2/RQ3
+├── test_compat.sh               # Quick compatibility smoke test
+├── fix_dataset.py               # Applies source compatibility fixes
+├── patch_sources.py             # Targeted structural rewrites
+├── prepare_phases_3_7.py        # Phases 3–7: candidate selection + settings
+├── create_new_dataset.py        # Assembles the final NewDataset directories
+├── TRABALHO_REALIZADO.md        # Portuguese summary of all 12 phases
+├── bin/                         # HyperCoverageTester, HyperFuzz, HyperEvo JARs
+├── lib/                         # Phosphor and support libraries
+├── scripts/                     # Python experiment scripts (RQ1/RQ2/RQ3)
+├── datasets/
+│   ├── FullDataset/             # Original 34-program paper dataset
+│   ├── NewDataset/              # 10 new programs (secure + insecure)
+│   ├── NewDataset-phosphor/     # Phosphor-instrumented version
+│   └── NewUnsecureDataset/      # 6 insecure programs (for RQ1)
+├── artifacts/                   # Dataset metadata and selection logs
+│   ├── original_paper_samples.json
+│   ├── candidate_pool.json
+│   ├── compatible_samples.json
+│   ├── incompatible_samples.json
+│   ├── selected_50_samples.json
+│   └── fixed_dataset_mapping.json
+└── results/
+    ├── final_report.md          # Full report with all metrics
+    ├── RQ1/                     # Hypercoverage correlation results
+    ├── RQ2/                     # Coverage per tool (HyperFuzz/HyperEvo)
+    └── RQ3/                     # Detection accuracy (all three tools)
 ```
-where `phosphorDir` is the (already existing) directory where `phosphor` and the instrumented JVM will be installed.
 
-## How to run the experiments
+---
 
-To easily run the experiments and collect the results, we provide some Python scripts. All scripts come with an ***usage*** and are described in the following.
+## Installation
 
-### Pre-processing
+### 1. Clone this repository
 
-To run the experiments for RQ<sub>3</sub>, you have to first instrument with `phosphor` the Java programs contained in the [`datasets/FullDataset-phosphor/`](/datasets/FullDataset) directory. We provide a Python script that compiles, packs and instruments Java programs. *We assume to run the script from the root directory of this repository*.
-```console
-foo@bar:~ReplicationPackage$ python3 scripts/phosphorCodeInstrumenter.py instrument <dataset> [<options>]
+```bash
+git clone https://github.com/jpspm/replication-hypertesting.git
+cd replication-hypertesting
 ```
-where `dataset` is the directory containing the Java source code to instrument (e.g., `datasets/FullDataset-phosphor`) and `options` can be:
--	`-controlTrack`, to enable taint tracking through control flow **[not stable]**
-- `-withoutBranchNotTaken`,	to disable branch not taken analysis in control tracking
 
-> In the pre-computed results we used the option `-withoutBranchNotTaken`.
+### 2. Build the Docker image
 
-The script also provides a `clean` command to remove already instrumented samples.
-
-### Running
-
-We provide three Python scripts, one for each research question, that run the experiments and compute the metrics (and output results). All scripts provide a `run` command, to run the experiments; and a `clean` command, to remove log files and already computed results. Results will be saved into the `results/` directory. *We assume to run the script from the root directory of this repository*.
-
-**[info]** The summary tables reported in the companion paper can be found at the end of the files with trailing `_metrics.json` in the computed results directories.
-
-#### RQ<sub>1</sub> (Correlation)
-
-To run the experiment for the first research question, you can run:
-```console
-foo@bar:~ReplicationPackage$ python3 scripts/runExperimentRQ1.py run <dataset> <attempts> <sampling>
+```bash
+docker build -t hypertesting-replication:latest .
 ```
-where `dataset` is the directory containing the sample Java programs (source code) to run (e.g., `datasets/UnsecureOnlyDataset`); `attempts` is the number of attempts in each test; and `sampling` is the number of samples used for the correlation.
-> In the pre-computed results we set `1000` attempts, with sampling equal to `100`.
 
-#### RQ<sub>2</sub> (Coverage)
+This installs OpenJDK 16, Python 3.8, and all required Python dependencies inside the container.
 
-To run the experiment for the second research question, you can run:
-```console
-foo@bar:~ReplicationPackage$ python3 scripts/runExperimentRQ2.py run <dataset> <runs>
-```
-where `dataset` is the directory containing the sample Java programs (source code) to run (e.g., `datasets/FullDataset`); and `runs` is the number of test repetitions.
-> In the pre-computed results we performed `5` runs.
+**Expected time:** 3–5 minutes (first build downloads ~500 MB).
 
-#### RQ<sub>3</sub> (Effectiveness)
+### 3. Verify the build
 
-To run the experiment for the third research question, you can run:
-```console
-foo@bar:~ReplicationPackage$ python3 scripts/runExperimentRQ3.py run <datasetHyper> <datasetPhosphor> <phosphorDir> <runs>
+```bash
+docker run --rm hypertesting-replication:latest java -version
+docker run --rm hypertesting-replication:latest python3 --version
 ```
-where `datasetHyper` is the directory containing the sample Java programs (source code) to run with `hyperfuzz` and `hyperevo` (e.g., `datasets/FullDataset`); `datasetPhosphor` is the directory containing the sample Java programs (instrumented `.jar` files) to run with `phosphor` (e.g., `datasets/FullDataset-phosphor`); `phosphorDir` is the directory where `phosphor` and the instrumented JVM are installed; and `runs` is the number of test repetitions.
-> In the pre-computed results we performed `5` runs.
 
-## Test Generators Usage
+Expected output:
+```
+openjdk version "16.0.1" 2021-04-20
+Python 3.8.10
+```
 
-The tools `hyperfuzz` and `hyperevo`, provided in the directory [`bin/`](/bin), implement the hypertesting procedure presented in the companion paper, considering a specific hyperproperty, *Non-Interference*. In particular, `hyperfuzz` adopts a (random) fuzzing-based approach, while `hyperevo` adopts evolutionary search algorithms guided by a hypercoverage-based fitness function.
+---
 
-Both tools take as mandatory inputs the source code of the Java class under test, the name of the method of the class to test and a class-specific configuration file containing the security tags for class and method variables.
+## Running the Experiments
 
-For instance, to test the method `leakyMethod` of the following class `LeakyClass.java`:
-```java
-public class LeakyClass {
-  public static boolean leakyMethod(boolean isSecret) {
-    boolean ret;
-    ret = (isSecret && true);
-    return ret;
-  }
-}
-```
-where `ret` is a public (`L`) variable while `isSecret` is a confidential (`H`) variable, you should provide to the tools a `settings.conf` file containing:
-```
-ret : L
-isSecret : H
-```
-The tools can be then run by typing:
-```console
-foo@bar:~ReplicationPackage$ java -jar bin/hyperevo.jar -c=example/LeakyClass.java -m=leakyMethod -s=example/settings.conf --static
-```
-where the flag `--static` indicates that we are testing a static method. The same syntax applies for `bin/hyperfuzz.jar`.
+### Full pipeline (recommended)
 
-The tools instrument and compile on-the-fly the input class and perform the hypertesting session. The parameters of the hypertesting session can be tuned by passing to the tools a configuration file (by using the command-line option `-p`). In the case of `hyperfuzz`, such configuration is a JSON file of the form (self-explanatory):
-```
-{
-  "testingBudget" : 2000,
-  "maxRepairRetry" : 10,
-  "batchSize" : 10,
-  "initialBatchSize" : 20
-}
-```
-In the case of `hyperevo`, such configuration is a JSON file of the form (self-explanatory):
-```
-{
-  "testingBudget" : 2000,
-  "maxRepairRetry" : 10,
-  "populationSize" : 20,
-  "selectionSize" : 10,
-  "tournamentK" : 3,
-  "maxCrossover" : 10,
-  "crossoverProbability" : 0.6,
-  "mutationProbability" : 0.75,
-  "mutationRetry" : 5
-}
-```
-For both tools, the ***testing budget*** is intended as the number of invocations of the method under test. Testing results are saved in the JSON file specified by using the command-line option `-r`, while the execution log output file can be specified by using the system property `-DlogFilename`.
+Runs Phases 8–12: Phosphor installation, instrumentation, RQ1, RQ2, and RQ3.
 
-Putting everything together (the same syntax applies for `bin/hyperfuzz.jar`):
-```console
-foo@bar:~ReplicationPackage$ java -DlogFilename=hyperevo-log -jar bin/hyperevo.jar -c=example/LeakyClass.java -m=leakyMethod -s=example/settings.conf --static -p=bin/hyperevo-config.conf -r=LeakyClass-hyperevo-results.json
+**Windows (PowerShell):**
+```powershell
+docker run --rm `
+  -v "${PWD}:/hypertesting" `
+  hypertesting-replication:latest `
+  bash /hypertesting/run_all_experiments.sh
 ```
-Both tools come with an usage, that can be inquired by using the `-h` option.
 
-<br>
+**Linux / macOS:**
+```bash
+docker run --rm \
+  -v "$(pwd):/hypertesting" \
+  hypertesting-replication:latest \
+  bash /hypertesting/run_all_experiments.sh
+```
+
+**Expected runtime:** ~35 minutes.  
+**Results land in:** `results/`
+
+---
+
+### Individual phases
+
+Open an interactive shell inside the container:
+
+```bash
+docker run --rm -it \
+  -v "$(pwd):/hypertesting" \
+  hypertesting-replication:latest bash
+cd /hypertesting
+```
+
+Then run phases individually:
+
+```bash
+# Phase 8 — Install Phosphor
+python3 scripts/phosphorInstallFromLocal.py install phosphor-install
+
+# Phase 9 — Instrument with Phosphor
+python3 scripts/phosphorCodeInstrumenter.py instrument \
+  datasets/NewDataset-phosphor -withoutBranchNotTaken
+
+# Phase 10 — RQ1: hypercoverage vs. violations correlation
+python3 scripts/runExperimentRQ1.py run datasets/NewUnsecureDataset 1000 100
+
+# Phase 11 — RQ2: coverage achieved by HyperFuzz and HyperEvo
+python3 scripts/runExperimentRQ2.py run datasets/NewDataset 5
+
+# Phase 12 — RQ3: detection effectiveness
+python3 scripts/runExperimentRQ3.py run \
+  datasets/NewDataset datasets/NewDataset-phosphor phosphor-install 5
+```
+
+---
+
+### Compatibility smoke test
+
+Verifies all 10 programs run without errors (fast, ~2 minutes):
+
+```bash
+docker run --rm \
+  -v "$(pwd):/hypertesting" \
+  hypertesting-replication:latest \
+  bash /hypertesting/test_compat.sh
+```
+
+Each program prints `PASS`. Uses `p=20, z=10` (required — `p=5, z=2` causes `ArithmeticException`).
+
+---
+
+## Reading the Results
+
+### Quick view (PowerShell)
+
+```powershell
+# RQ1 — correlation metrics CSV
+(Get-Content results\RQ1\*\hypercoveragetester-metrics.json |
+  ConvertFrom-Json).csvTable
+
+# RQ2 — hypercoverage per program
+(Get-Content results\RQ2\*_metrics.json |
+  ConvertFrom-Json).csvTable
+
+# RQ3 — classification metrics
+(Get-Content results\RQ3\*_metrics.json |
+  ConvertFrom-Json).csvTable
+```
+
+### Full report
+
+Open [`results/final_report.md`](results/final_report.md) for the complete analysis including:
+- Dataset selection and compatibility screening
+- RQ1 correlation tables (Pearson, Spearman, Kendall, point-biserial)
+- RQ2 hypercoverage per program
+- RQ3 TP/TN/FP/FN classification table and accuracy metrics
+- Threats to validity discussion
+- Reproducibility commands
+
+---
+
+## Key Results at a Glance
+
+**Dataset:** 10 programs (6 insecure, 4 secure) from IFSpec — out of 198 candidates, only 10 were tool-compatible.
+
+**RQ1 — All 6 insecure programs show significant positive correlation between hypercoverage and violations (p < 0.01).**
+
+**RQ2 — Hypercoverage achieved:**
+
+| Tool | Programs at 100% coverage |
+|---|---|
+| HyperEvo | 10 / 10 |
+| HyperFuzz | 9 / 10 (gives up on `simpleTypes`) |
+
+**RQ3 — Detection accuracy:**
+
+| Tool | TPR (Recall) | FPR | Accuracy |
+|---|---|---|---|
+| HyperEvo | 1.00 | 0.25 | 0.90 |
+| HyperFuzz | 0.83 | 0.25 | 0.80 |
+| Phosphor | n/a* | n/a* | n/a* |
+
+\* Phosphor requires programs to have a `main()` method. The simplified IFSpec programs do not, so Phosphor produced no meaningful results.
+
+---
+
+## Known Limitations
+
+| Issue | Impact |
+|---|---|
+| Only 10/50 requested programs found compatible | Reduced statistical power |
+| Programs required source modifications | Divergence from original IFSpec form |
+| `timebomb` causes false positive in both fuzzing tools | Unreachable dead-code branch triggers coverage goal |
+| Phosphor incompatible with programs lacking `main()` | RQ3 Phosphor baseline invalid for this dataset |
+| `computeMetricsRQ3.py` crashes (`hyperrandom` vs `hyperfuzz` naming mismatch) | RQ3 metrics JSON computed manually |
+
+---
+
+## Reproducing the Dataset Preparation (optional)
+
+The `NewDataset` is already included. To rebuild it from scratch from the IFSpec source:
+
+```bash
+# 1. Clone IFSpec
+git clone https://github.com/statycc/ifspec workspace/ifspec
+
+# 2. Generate settings and initial dataset (inside Docker container)
+python3 prepare_phases_3_7.py
+
+# 3. Apply source compatibility patches
+python3 patch_sources.py
+
+# 4. Rebuild dataset directories
+python3 fix_dataset.py
+python3 create_new_dataset.py
+```
+
+Then re-run the Docker pipeline above.

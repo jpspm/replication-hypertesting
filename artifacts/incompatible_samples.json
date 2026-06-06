@@ -1,0 +1,785 @@
+{
+  "count": 156,
+  "samples": [
+    {
+      "sample": "SecuriBench-Aliasing1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Aliasing2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Aliasing3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Aliasing4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Aliasing4-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Aliasing5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Aliasing6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays10",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays10-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays2-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays3-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays7",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays8",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays8-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Arrays9",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic10",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic11",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic11-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic12",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic12-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic13",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic14",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic15",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic16",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic17",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic17-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic18",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic19",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic20",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic22",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic23",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic24",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic25",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic26",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic27",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic28",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic29",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic29-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic30",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic30-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic31",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic32",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic33",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic34",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic35",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic36",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic37",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic38",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic38-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic39",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic40",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic41",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic42",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic7",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic8",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Basic9",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections10",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections10-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections11",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections12",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections13",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections13-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections14",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections2-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections6-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections7",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections7-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections8",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Collections9",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures1-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures2-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Datastructures6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Factories1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Factories1-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Factories2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Factories2-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Factories3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Factories3-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter1-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter10",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter10-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter11",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter11-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter12",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter12-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter13",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter14",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter2-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter3-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter5-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter7",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter8",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter8-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter9",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Inter9-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred7",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred8",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Pred9",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Refl1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Refl2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Refl3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Refl4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Sanitizers1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Sanitizers2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Sanitizers3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Sanitizers4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Sanitizers5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Sanitizers6",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Session1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Session2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Session2-secure",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-Session3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-StrongUpdates1",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-StrongUpdates2",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-StrongUpdates3",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-StrongUpdates4",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "SecuriBench-StrongUpdates5",
+      "status": "incompatible",
+      "reason": "no Java file found"
+    },
+    {
+      "sample": "Reflection-Accessibility-Modification",
+      "status": "incompatible",
+      "reason": "no testable method found (reflection-based program)"
+    },
+    {
+      "sample": "Reflection-Accessibility-Modification-Secure",
+      "status": "incompatible",
+      "reason": "no testable method found (reflection-based program)"
+    },
+    {
+      "sample": "simpleReflectionAccessPrivateField",
+      "status": "incompatible",
+      "reason": "no testable method found (reflection-based program)"
+    },
+    {
+      "sample": "simpleReflectionAccessPrivateField-secure",
+      "status": "incompatible",
+      "reason": "no testable method found (reflection-based program)"
+    }
+  ]
+}

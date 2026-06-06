@@ -1,0 +1,71 @@
+{
+  "total": 10,
+  "secure_count": 4,
+  "insecure_count": 6,
+  "mapping": [
+    {
+      "ifspec": "ArrayCopyDirectLeak",
+      "canonical": "ArrayCopyDirectLeak-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ImplicitListSizeLeak",
+      "canonical": "ImplicitListSizeLeak-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ImplicitListSizeNoLeak",
+      "canonical": "ImplicitListSizeNoLeak-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "StringIntern",
+      "canonical": "StringIntern-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "Webstore",
+      "canonical": "Webstore-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "simpleConditionalAssignmentEqual",
+      "canonical": "simpleConditionalAssignmentEqual-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "simpleListSize",
+      "canonical": "simpleListSize-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "simpleListToArraySize",
+      "canonical": "simpleListToArraySize-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "simpleTypes",
+      "canonical": "simpleTypes-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "timebomb",
+      "canonical": "timebomb-secure",
+      "ground_truth": "SECURE"
+    }
+  ],
+  "incompatible": [
+    {
+      "name": "PasswordChecker",
+      "reason": "fuzzer-incompatible"
+    },
+    {
+      "name": "Polynomial",
+      "reason": "fuzzer-incompatible"
+    },
+    {
+      "name": "Webstore2",
+      "reason": "fuzzer-incompatible"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "total": 42,
+  "secure_count": 20,
+  "insecure_count": 22,
+  "skipped": [],
+  "mapping": [
+    {
+      "ifspec": "ArrayCopyDirectLeak",
+      "canonical": "ArrayCopyDirectLeak-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ArrayIndexException-Insecure",
+      "canonical": "ArrayIndexException-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ArrayIndexException-secure",
+      "canonical": "ArrayIndexException-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "ConditionalLekage",
+      "canonical": "ConditionalLekage-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ExceptionDivZero",
+      "canonical": "ExceptionDivZero-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ExceptionHandling",
+      "canonical": "ExceptionHandling-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ExceptionalControlFlow1-Insecure",
+      "canonical": "ExceptionalControlFlow1-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ExceptionalControlFlow1-secure",
+      "canonical": "ExceptionalControlFlow1-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "ExceptionalControlFlow2-secure",
+      "canonical": "ExceptionalControlFlow2-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "ImplicitListSizeLeak",
+      "canonical": "ImplicitListSizeLeak-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ImplicitListSizeNoLeak",
+      "canonical": "ImplicitListSizeNoLeak-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "ObjectSensLeak",
+      "canonical": "ObjectSensLeak-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "PasswordChecker",
+      "canonical": "PasswordChecker-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "Polynomial",
+      "canonical": "Polynomial-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "ReflectionSetSecretPrivateField-Insecure",
+      "canonical": "ReflectionSetSecretPrivateField-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ReflectionSetSecretPrivateField-secure",
+      "canonical": "ReflectionSetSecretPrivateField-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "ReviewerAnonymity-Leak",
+      "canonical": "ReviewerAnonymity-Leak-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ReviewerAnonymity-NoLeak",
+      "canonical": "ReviewerAnonymity-NoLeak-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "ScenarioBanking-Insecure",
+      "canonical": "ScenarioBanking-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "ScenarioBanking-Secure",
+      "canonical": "ScenarioBanking-Secure-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "Static-Initializers-ArrayAccess-Insecure",
+      "canonical": "Static-Initializers-ArrayAccess-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "Static-Initializers-ArrayAccess-secure",
+      "canonical": "Static-Initializers-ArrayAccess-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "Static-Initializers-HighAccess-Insecure",
+      "canonical": "Static-Initializers-HighAccess-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "Static-Initializers-HighAccess-secure",
+      "canonical": "Static-Initializers-HighAccess-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "Static-Initializers-Leak",
+      "canonical": "Static-Initializers-Leak-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "Static-Initializers-NoLeak",
+      "canonical": "Static-Initializers-NoLeak-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "Static-Initializers-Not-Called",
+      "canonical": "Static-Initializers-Not-Called-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "StaticDispatching",
+      "canonical": "StaticDispatching-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "StringIntern",
+      "canonical": "StringIntern-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "Webstore",
+      "canonical": "Webstore-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "Webstore2",
+      "canonical": "Webstore2-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "Webstore3",
+      "canonical": "Webstore3-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "Webstore4",
+      "canonical": "Webstore4-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "simpleClassLoading",
+      "canonical": "simpleClassLoading-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "simpleConditionalAssignmentEqual",
+      "canonical": "simpleConditionalAssignmentEqual-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "simpleListSize",
+      "canonical": "simpleListSize-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "simpleListToArraySize",
+      "canonical": "simpleListToArraySize-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "simpleRandomErasure1",
+      "canonical": "simpleRandomErasure1-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "simpleRandomErasure2",
+      "canonical": "simpleRandomErasure2-secure",
+      "ground_truth": "SECURE"
+    },
+    {
+      "ifspec": "simpleTypes",
+      "canonical": "simpleTypes-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "simpleTypesCastingError",
+      "canonical": "simpleTypesCastingError-unsecure",
+      "ground_truth": "INSECURE"
+    },
+    {
+      "ifspec": "timebomb",
+      "canonical": "timebomb-secure",
+      "ground_truth": "SECURE"
+    }
+  ]
+}

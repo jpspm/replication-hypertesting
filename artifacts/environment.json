@@ -1,0 +1,11 @@
+{
+  "os": "Windows-10-10.0.26200-SP0",
+  "java": "java version \"16.0.1\" 2021-04-20\nJava(TM) SE Runtime Environment (build 16.0.1+9-24)\nJava HotSpot(TM) 64-Bit Server VM (build 16.0.1+9-24, mixed mode, sharing)",
+  "python": "Python 3.11.9",
+  "pip_freeze": "",
+  "docker_image": "hypertesting-replication:latest",
+  "docker_image_hash": "sha256:689d0d9f08fe4dec1eeed29cf3744fd3389a324652df492b75cdccb602752ab3",
+  "container_java": "OpenJDK 16.0.1 (Ubuntu 20.04)",
+  "container_python": "Python 3.8.10",
+  "container_os": "Ubuntu 20.04.3 LTS"
+}
