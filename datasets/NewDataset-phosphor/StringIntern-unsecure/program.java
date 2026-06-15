@@ -10,4 +10,13 @@ public class program {
         return ret;
     }
 
+    public static void main(String[] args) {
+        int result = foo(1);
+        Taint t = MultiTainter.getTaint(result);
+        if (t != null) {
+            System.out.println("Phosphor: ret is tainted");
+            System.out.println("Phosphor: taint labels " + t);
+        }
+    }
+
 }

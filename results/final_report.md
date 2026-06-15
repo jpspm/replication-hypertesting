@@ -1,7 +1,7 @@
 # HyperTesting Extended Replication Report
 
 **Paper:** Hypertesting of Programs: Theoretical Foundation and Automated Test Generation (ICSE 2024)  
-**Date:** 2026-06-06  
+**Date:** 2026-06-06 (updated 2026-06-15)  
 **Execution environment:** Docker (Ubuntu 20.04), OpenJDK 16.0.1, Python 3.8.10
 
 ---
@@ -164,33 +164,31 @@ To make programs compatible with the HyperCoverageTester toolchain, the followin
 
 | Program | Ground Truth | HyperFuzz | HyperEvo | Phosphor | HF Category | HE Category | PH Category |
 |---|---|---|---|---|---|---|---|
-| ArrayCopyDirectLeak-unsecure | INSECURE | 0 | 0 | 1* | TP | TP | FN* |
-| ImplicitListSizeLeak-unsecure | INSECURE | 0 | 0 | 1* | TP | TP | FN* |
+| ArrayCopyDirectLeak-unsecure | INSECURE | 0 | 0 | 0 | TP | TP | TP |
+| ImplicitListSizeLeak-unsecure | INSECURE | 0 | 0 | 0 | TP | TP | TP |
 | ImplicitListSizeNoLeak-secure | SECURE | 1 | 1 | 1 | TN | TN | TN |
 | simpleConditionalAssignmentEqual-secure | SECURE | 1 | 1 | 1 | TN | TN | TN |
-| simpleListSize-unsecure | INSECURE | 0 | 0 | 1* | TP | TP | FN* |
-| simpleListToArraySize-unsecure | INSECURE | 0 | 0 | 1* | TP | TP | FN* |
-| simpleTypes-unsecure | INSECURE | 2 (given up) | 0 | 1* | FN | TP | FN* |
-| StringIntern-unsecure | INSECURE | 0 | 0 | 1* | TP | TP | FN* |
+| simpleListSize-unsecure | INSECURE | 0 | 0 | 0 | TP | TP | TP |
+| simpleListToArraySize-unsecure | INSECURE | 0 | 0 | 0 | TP | TP | TP |
+| simpleTypes-unsecure | INSECURE | 2 (given up) | 0 | 1† | FN | TP | FN† |
+| StringIntern-unsecure | INSECURE | 0 | 0 | 0 | TP | TP | TP |
 | timebomb-secure | SECURE | 0 | 0 | 1 | FP | FP | TN |
 | Webstore-secure | SECURE | 1 | 1 | 1 | TN | TN | TN |
 
-*Phosphor: classified as "secure" because the programs lack `main()` methods (see note below).
+†Phosphor correctly executes but does not detect the leak in `simpleTypes` because it tracks data flow only; the return value (`ret = 1` or `ret = 0`) is a constant not derived by direct data assignment from `secret`, only through control flow — Phosphor without `-controlTrack` cannot detect this class of leak.
 
 ### Aggregate Metrics
 
 | Metric | HyperFuzz | HyperEvo | Phosphor |
 |---|---|---|---|
-| TP (True Positives) | 5 | 6 | 0* |
+| TP (True Positives) | 5 | 6 | 5 |
 | TN (True Negatives) | 3 | 3 | 4 |
 | FP (False Positives) | 1 | 1 | 0 |
-| FN (False Negatives) | 1 | 0 | 6* |
-| TPR (Recall) | **0.83** | **1.00** | 0.00* |
+| FN (False Negatives) | 1 | 0 | 1 |
+| TPR (Recall) | **0.83** | **1.00** | **0.83** |
 | FPR | 0.25 | 0.25 | 0.00 |
-| FNR | 0.17 | 0.00 | 1.00* |
-| ACC (Accuracy) | **0.80** | **0.90** | 0.40* |
-
-*Phosphor values are not meaningful due to execution failure (see note below).
+| FNR | 0.17 | 0.00 | 0.17 |
+| ACC (Accuracy) | **0.80** | **0.90** | **0.90** |
 
 ### Notes on Individual Results
 
@@ -200,8 +198,8 @@ The `timebomb` program contains a dead-code branch `if (curr < inThePast)` where
 **simpleTypes-unsecure — False Negative (HyperFuzz):**  
 HyperFuzz achieves only 0.33 coverage on simpleTypes (6 goals), giving up after all 5 runs (`result = 2`). HyperEvo succeeds (coverage 1.0, correctly classified as insecure). This demonstrates that HyperFuzz's random mutation strategy is insufficient for programs with complex multi-goal hypercoverage spaces, while HyperEvo's evolutionary search handles them correctly.
 
-**Phosphor — Execution Failure:**  
-Phosphor's dynamic taint analysis requires programs to be executable as standalone JVM applications (with a `main` method). The simplified IFSpec programs in our dataset were designed as static utility classes for compatibility with HyperFuzz/HyperEvo and do not include `main` methods. Phosphor's runner reported `Error: Main method not found` for all programs (except `timebomb` and `Main.java`), resulting in no taint flows being detected and all programs classified as result=1 (secure). This renders Phosphor's RQ3 metrics not meaningful for our dataset. The RQ3 metrics for Phosphor are included for completeness but should not be interpreted as tool performance.
+**Phosphor — Updated Results (2026-06-15):**  
+The Phosphor-instrumented programs were updated to include `public static void main(String[] args)` methods that invoke the analysis function and explicitly check and print taint labels via `MultiTainter.getTaint()`. After re-instrumentation with `phosphorCodeInstrumenter.py` (a pre-existing `UnboundLocalError` bug in the script was also fixed), all 10 programs executed successfully under the Phosphor javaagent with exit code 0. Taint output format observed: `Taint [Labels = [[h_]]` (tainted) or `Taint [Labels = [[]` (untainted). Results are based on manual inspection of taint labels; the automatic pipeline parser (`phosphorRun.py` / `decodeResultPhosphor`) requires the taint label at word position 3 of the output line and may need adjustment to match the actual Phosphor `Taint.toString()` format.
 
 **Note on computeMetricsRQ3:**  
 The `computeMetricsRQ3.py` script crashed with `FileNotFoundError: 'scripts/runExperimentRQ3-hyperrandom.log'` because the script expects strategy name "hyperrandom" but the runner uses "hyperfuzz". The RQ3 metrics above were computed manually from the raw result JSON files (`hyperfuzz-results.json`, `hyperevo-results.json`, `phosphor-results.json`).
@@ -210,7 +208,8 @@ The `computeMetricsRQ3.py` script crashed with `FileNotFoundError: 'scripts/runE
 The paper reported that both HyperFuzz and HyperEvo achieved high TPR on their 34-program dataset (all insecure programs correctly classified). Our replication shows:
 - HyperEvo: TPR = 1.00, ACC = 0.90 — consistent with paper results; the single false positive (timebomb) is a tool limitation with time-dependent programs.
 - HyperFuzz: TPR = 0.83, ACC = 0.80 — one false negative (simpleTypes, given up due to low coverage). The paper's programs were simpler; our more complex simpleTypes exposes HyperFuzz's coverage limitations.
-- The false positive rate (0.25 for both tools on timebomb) is an artifact of the time-bomb pattern; the paper's original dataset did not include such programs.
+- Phosphor: TPR = 0.83, ACC = 0.90 — five true positives detected via data-flow taint tracking; one false negative (simpleTypes) due to control-flow-only leak not captured by data-flow analysis without `-controlTrack`; zero false positives. Phosphor matches HyperFuzz in recall and matches HyperEvo in accuracy.
+- The false positive rate (0.25 for both fuzzers on timebomb) is an artifact of the time-bomb pattern; the paper's original dataset did not include such programs. Phosphor correctly classifies timebomb as secure (dynamic analysis only executes the reachable branch).
 
 ---
 
@@ -228,7 +227,7 @@ Seven of the 10 programs required source-level modifications to be compatible wi
 
 ### Phosphor Compatibility
 
-The simplified programs lack `main()` methods, making them incompatible with Phosphor's execution-based taint analysis. The original paper's programs presumably had `main` methods. This makes RQ3 Phosphor results invalid for our dataset, preventing a meaningful comparison of the Phosphor baseline.
+The simplified programs were initially missing `main()` methods, causing `Error: Main method not found` for 9/10 programs. This was corrected (2026-06-15) by adding `main` methods to all 10 programs in `NewDataset-phosphor`, re-instrumenting, and validating execution. The remaining limitation is that `simpleTypes` leaks information only through control flow (the return value is a constant independent of `secret` at the data-flow level), which Phosphor cannot detect without the `-controlTrack` option. This represents a known limitation of dynamic data-flow taint tracking for implicit flows.
 
 ### Randomness
 

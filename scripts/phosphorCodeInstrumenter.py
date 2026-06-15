@@ -66,6 +66,7 @@ def getCleanupCommand(sampleDir, classFile):
 	return mvcmd + "; " + rmcmd
 
 def main(datasetDir, options):
+	logFile = "scripts/" + SCRIPT_NAME + ".log"
 	for sampleDir in glob.glob(datasetDir + "/*/"):
 		print(sampleDir)
 		classFilePath = glob.glob(sampleDir + "/*.java")[0]
@@ -82,7 +83,6 @@ def main(datasetDir, options):
 		os.system(instrumentationCommand)
 		cleanupCommand = getCleanupCommand(sampleDir, classFile)
 		os.system(cleanupCommand)
-		logFile = "scripts/" + SCRIPT_NAME + ".log"
 	with open(logFile, 'a') as file:
 		file.write("\nInstrumentation of '{0}' completed".format(os.path.abspath(datasetDir)))
 	print("\nInstrumentation completed")

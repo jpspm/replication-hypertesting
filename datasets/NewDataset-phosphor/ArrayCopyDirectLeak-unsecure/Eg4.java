@@ -10,4 +10,13 @@ public class Eg4 {
         return ret;
     }
 
+    public static void main(String[] args) {
+        int result = f(1, 0);
+        Taint t = MultiTainter.getTaint(result);
+        if (t != null) {
+            System.out.println("Phosphor: ret is tainted");
+            System.out.println("Phosphor: taint labels " + t);
+        }
+    }
+
 }

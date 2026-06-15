@@ -4,7 +4,12 @@ import java.util.Arrays; // @Phosphor
 public class Main {
 	public static void main(String[] args) {
 		int value = 5;
-    noLeak(value);
+		int result = noLeak(value);
+		Taint t = MultiTainter.getTaint(result);
+		if (t != null) {
+			System.out.println("Phosphor: ret is tainted");
+			System.out.println("Phosphor: taint labels " + t);
+		}
 	}
 
   static long inThePast =  1456223086265L; // 23 Feb. 2016 11:24
